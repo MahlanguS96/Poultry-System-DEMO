@@ -5,7 +5,8 @@ const OWNER_CONFIG = {
   ownerPin: "1820",
   expiryDays: 14,
   seedCodes: [
-    { code: "Sands96", farm: "ABC Chickens", status: "active", device: null, created: Date.now(), firstUse: null }
+    { code: "Sands96", farm: "ABC Chickens", status: "active", device: null, created: Date.now(), firstUse: null },
+    { code: "BS2001", farm: "BS Enterprise", status: "active", device: null, created: Date.now(), firstUse: null },
   ]
 };
 // To generate new code for a farm, press Ctrl+Shift+O -> PIN 1820 -> Type GENERATE
