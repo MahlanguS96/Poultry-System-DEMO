@@ -57,10 +57,25 @@ const OWNER_CONFIG = {
   ownerPin: "1820",
   expiryDays: 14,
   seedCodes: [
-    { code: "Sands96", farm: "ABC Chickens", status: "active", device: null, created: Date.now(), firstUse: null }
+    { code: "Sands96", farm: "ABC Chickens", status: "active", device: null, created: Date.now(), firstUse: null },
+    { code: "BS2001", farm: "BS Enterprise", status: "active", device: null, created: Date.now(), firstUse: null },
+    { code: "GreenFarm", farm: "Green Farm", status: "active", device: null, created: Date.now(), firstUse: null }
+
+    
   ]
 };
-let CODES = JSON.parse(localStorage.getItem('agritech_codes') || 'null') || JSON.parse(JSON.stringify(OWNER_CONFIG.seedCodes));
+let CODES = (()=> {
+  let saved = JSON.parse(localStorage.getItem('agritech_codes') || 'null');
+  let seeds = JSON.parse(JSON.stringify(OWNER_CONFIG.seedCodes));
+  if(!saved) return seeds;
+  // Merge new codes from OWNER_CONFIG that are not in saved (for GitHub deploys)
+  seeds.forEach(s => {
+    if(!saved.find(c => c.code.toUpperCase() === s.code.toUpperCase())){
+      saved.push(s);
+    }
+  });
+  return saved;
+})();
 let REQUESTS = JSON.parse(localStorage.getItem('agritech_requests') || '[]');
 let DEVICE_ID = localStorage.getItem('agritech_device') || 'DEV-' + Math.random().toString(36).substr(2,6).toUpperCase();
 localStorage.setItem('agritech_device', DEVICE_ID);
