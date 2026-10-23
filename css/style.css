@@ -1,0 +1,4 @@
+
+/* Extra editable CSS - original system has its own Tailwind inside index.html */
+/* You can edit colors here */
+.watermarkOriginal{position:fixed;top:42%;left:50%;transform:translate(-50%,-50%) rotate(-28deg);font-size:62px;color:rgba(0,0,0,0.04);pointer-events:none;z-index:9998;font-weight:900}
